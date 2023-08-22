@@ -2,7 +2,31 @@
 <html>
 <head>
 <meta charset="utf-8">
- <meta http-equiv="refresh" content="0;url=http://124.221.103.113:3000/zh">
+ <script>
+        // 获取 URL 参数的函数
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        // 获取 'to' 参数的值
+        var toParam = getParameterByName('to');
+
+        // 根据 'to' 参数的不同值执行跳转
+        if (toParam === 'a') {
+            window.location.href = 'http://124.221.103.113:3000/zh';
+        } else if (toParam === 'b') {
+            window.location.href = 'http://124.221.103.113/zhihu';
+        } else {
+            // 如果 'to' 参数没有匹配的值，可以执行默认操作，例如返回首页或者其他页面
+            window.location.href = 'http://work-hard-to-live.vip/';
+        }
+    </script>
 <title>文档标题</title>
 </head>
  
